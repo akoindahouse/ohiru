@@ -1,11 +1,11 @@
-# app.py
-# ---------------------------------------------
-# 職場みんなで使える「ランチ決め」Webアプリ
-# ・ジャンルをプルダウンに変更
-# ・価格帯不要
-# ・履歴・統計機能削除
-# ・徒歩(分)、重み を削除
-# ---------------------------------------------
+# ====== 簡易パスワード認証 ======
+PASSWORD = os.getenv("APP_PASSWORD", None) or st.secrets.get("auth", {}).get("password", "")
+
+pw = st.text_input("Password", type="password")
+if pw != PASSWORD:
+    st.stop()  # パスワードが違ったらここで処理を止める
+# ====== ここまで ======
+
 
 import sqlite3
 import random
