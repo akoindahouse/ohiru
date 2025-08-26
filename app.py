@@ -1,11 +1,10 @@
+import streamlit as st
+
 # ====== 簡易パスワード認証 ======
-PASSWORD = os.getenv("APP_PASSWORD", None) or st.secrets.get("auth", {}).get("password", "")
-
 pw = st.text_input("Password", type="password")
-if pw != PASSWORD:
-    st.stop()  # パスワードが違ったらここで処理を止める
+if pw != st.secrets["auth"]["password"]:
+    st.stop()  # パスワードが一致しない場合はここで終了
 # ====== ここまで ======
-
 
 import sqlite3
 import random
